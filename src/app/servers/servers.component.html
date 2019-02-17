@@ -10,8 +10,14 @@
 <ng-template #noServer><p>No server was created!</p></ng-template>
 <app-server *ngFor="let server of servers"></app-server>
 
-
+<hr>
 <label for="">Username</label>
 <input type="text" class="form-control" [(ngModel)]="username">
 <p>{{ username }}</p>
 <button class="btn btn-primary" [disabled]="username === ''" (click)="resetUsername()">Reset Username</button>
+
+
+<hr>
+<button class="btn btn-primary" (click)="onShowMessage()">Display Details</button>
+<p *ngIf="showMessage">The secret message is:  YOU ARE AWESOME!!!</p>
+<p *ngFor="let messageLog of messageLogs" [ngStyle]="{backgroundColor : messageLog >= 5 ? 'blue' : 'transparent'}" [ngClass]="{'white-text' : messageLog >= 5 }">{{ messageLog }}</p>
